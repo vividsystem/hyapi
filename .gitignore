@@ -35,6 +35,8 @@ jspm_packages/
 # Optional stylelint cache
 .stylelintcache
 
+dist
+
 # dotenv environment variable files
 .env
 .env.development.local

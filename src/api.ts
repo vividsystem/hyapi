@@ -1,9 +1,5 @@
 import fetch  from 'node-fetch'
 
-interface Guild {
-  id: number
-}
-
 interface User {
   uuid: string,
   firstLogin: Date
@@ -63,16 +59,6 @@ class HypixelApiClient {
     this.hypixelApiUrl = `https://api.hypixel.net/`
   }
 
-
-  // GuildByID(id: string): Guild | null {
-  //   return {}
-  // }
-
-  // GuildByUUID(uuid: string): Guild | null {
-  //   return {}
-  // }
-
-
   async UserByName(name: string): Promise<User | null> {
     let uuid = await this.UUIDByName(name)
     if(uuid == null) return null
@@ -128,4 +114,4 @@ class HypixelApiClient {
   }
 }
 
-export {HypixelApiClient}
+export {HypixelApiClient, User}
