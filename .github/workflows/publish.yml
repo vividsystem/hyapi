@@ -4,11 +4,7 @@ on:
     branches: [ master ]
 jobs:
   release:
-    strategy:
-      matrix:
-        version: [18, 19]
-        os: [ubuntu-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
       # Checkout project repository
       - name: Checkout
