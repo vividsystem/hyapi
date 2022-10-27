@@ -1,9 +1,7 @@
 {
   "dependencies": {
-    "fetch": "^1.1.0",
-    "node-fetch": "^3.2.10"
   },
-  "name": "hypi",
+  "name": "hyapi",
   "version": "1.0.0",
   "description": "An easy way to interact with the hypixel api",
   "main": "dist/index.js",
@@ -12,19 +10,18 @@
     "./dist"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/vividsystem/hypi"
+    "url": "github.com/vividsystem/hyapi"
   },
   "keywords": [
     "hypixel",
     "api"
   ],
-  "author": "vividsystem",
+  "author": "vividsystem <notrealbutnotobot@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/node-fetch": "^2.6.2"
   }
 }
