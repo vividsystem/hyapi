@@ -1,9 +1,3 @@
-import fetch  from 'node-fetch'
-
-interface Guild {
-  id: number
-}
-
 interface User {
   uuid: string,
   firstLogin: Date
@@ -63,16 +57,6 @@ class HypixelApiClient {
     this.hypixelApiUrl = `https://api.hypixel.net/`
   }
 
-
-  // GuildByID(id: string): Guild | null {
-  //   return {}
-  // }
-
-  // GuildByUUID(uuid: string): Guild | null {
-  //   return {}
-  // }
-
-
   async UserByName(name: string): Promise<User | null> {
     let uuid = await this.UUIDByName(name)
     if(uuid == null) return null
@@ -106,7 +90,15 @@ class HypixelApiClient {
       lastLogin: new Date(result.player.lastLogin),
       lastLogout: new Date(result.player.lastLogout),
       rank: result.player.rank,
-      karma: result.player.karma
+      karma: result.player.karma,
+      socialMedia: { 
+        youtube: result.player.socialMedia?.links.YOUTUBE,
+        twitter: result.player.socialMedia?.links.TWITTER,
+        instagram: result.player.socialMedia?.links.INSTAGRAM,
+        hypixel: result.player.socialMedia?.links.HYPIXEL,
+        twitch: result.player.socialMedia?.links.TWITCH,
+        discord: result.player.socialMedia?.links.DISCORD
+      }
     }
 
     
@@ -128,4 +120,4 @@ class HypixelApiClient {
   }
 }
 
-export {HypixelApiClient}
+export {HypixelApiClient, User}

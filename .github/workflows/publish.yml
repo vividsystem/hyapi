@@ -1,11 +1,14 @@
 name: Publish to NPM Registry
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 jobs:
   release:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: [18, 19]
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       # Checkout project repository
       - name: Checkout
@@ -16,8 +19,10 @@ jobs:
         uses: actions/setup-node@v2
         with:
           registry-url: https://registry.npmjs.org/
-          node-version: '14'
+          node-version: ${{ matrix.version }}
 
+      - name: Buikd
+        run: npm run build
       # Publish version to public repository
       - name: Publish
         run: npm publish --verbose --access public
